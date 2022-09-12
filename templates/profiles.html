@@ -7,9 +7,9 @@
     <script src="script.js"></script>
   </head>
   <body>
+    <h1>PROFILES</h1>
     {% for profile in profiles %}
-      {{ profile.user.first_name }} {{ profile.user.last_name }} </br>
-      {{ profile.portfolio|safe }}
+      <a href="{{ profile.user.first_name }}-{{ profile.user.last_name }}">{{ profile.user.first_name }} {{ profile.user.last_name }}</a></br>
     {% endfor %}
   </body>
 </html>
