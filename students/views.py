@@ -26,8 +26,8 @@ def profile_edit(request, first_name, last_name):
     if request.method == 'POST':
         form = ProfileForm(request.POST)
         if form.is_valid():
-            print("PORTFOLIO", form.cleaned_data['portfolio'])
-            # process the data in form.cleaned_data as required
+            profile.portfolio = form.cleaned_data['portfolio']
+            profile.save()
             return HttpResponseRedirect('/')
     else:
         form = ProfileForm(instance=profile)
