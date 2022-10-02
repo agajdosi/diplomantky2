@@ -28,7 +28,9 @@ def profile_edit(request, first_name, last_name):
         if form.is_valid():
             profile.portfolio = form.cleaned_data['portfolio']
             profile.save()
-            return HttpResponseRedirect('/')
+            path = request.path[:-1]
+            path = path.rpartition('/')
+            return HttpResponseRedirect(f'{path[0]}/')
     else:
         form = ProfileForm(instance=profile)
 
