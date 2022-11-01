@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8">
     <title>title</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
   </head>
   <body>
     <h1>{{ profile.user.first_name }} {{ profile.user.last_name }}</h1>
       {{ profile.portfolio|safe }}
 
+    {% if request.user == profile.user %}
     <a href="edit/">EDIT</a>
+    {% endif %}
   </body>
 </html>
