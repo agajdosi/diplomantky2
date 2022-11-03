@@ -8,10 +8,12 @@
   </head>
   <body>
     {% include "header.html" %}
-    
+
     <h1>GRADUATES</h1>
     {% for profile in profiles %}
       <a href="{{ profile.user.first_name }}-{{ profile.user.last_name }}">{{ profile.user.first_name }} {{ profile.user.last_name }}</a></br>
     {% endfor %}
+
+    {% include "footer.html" %}
   </body>
 </html>

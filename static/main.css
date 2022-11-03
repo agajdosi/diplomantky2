@@ -1,0 +1,10 @@
+
+.main{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.main div{
+    flex-shrink: 0;
+    width: 40vw;
+}

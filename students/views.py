@@ -9,10 +9,10 @@ from .forms import ProfileForm
 
 def index(request):
     exhibitions = Exhibition.objects.all()
-    diplomants = User.objects.filter(groups__name='DIPLOMANTKY')
+    graduates = User.objects.filter(groups__name='DIPLOMANTKY')
     context = {
       'exhibitions': exhibitions,
-      'diplomants': diplomants,
+      'graduates': graduates,
     }
     return render(request, 'index.html', context=context)
 

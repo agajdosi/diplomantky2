@@ -3,19 +3,32 @@
   <head>
     <meta charset="utf-8">
     <title>INDEX</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="static/main.css">
   </head>
   <body>
     {% include "header.html" %}
 
-    <h1>EXHIBITIONS</h1>
-    {% for exhibition in exhibitions %}
-        {{ exhibition }}</br>
-    {% endfor %}
-    <h1>DIPLOMANTS</h1>
-    {% for diplomant in diplomants %}
-        {{ diplomant }}</br>
-    {% endfor %}
+<div class="main">
+
+{% for exhibition in exhibitions %}
+  <div class="exhibition">
+    {{ exhibition.title }}
+    {{ exhibition.url }}
+    
+  </div>
+
+  <div class="graduates">
+  {% for graduate in exhibition.artists.all %}
+    <div class="graduate">
+    {{ graduate.first_name }} {{ graduate.last_name }}
+    </div>
+  {% endfor %}
+  </div>
+
+{% endfor %}
+
+
+</div>
+
   </body>
 </html>
