@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>INDEX</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+  </head>
+  <body>
+    {% include "header.html" %}
+
+    <h1>EXHIBITIONS</h1>
+    {% for exhibition in exhibitions %}
+        {{ exhibition }}</br>
+    {% endfor %}
+    <h1>DIPLOMANTS</h1>
+    {% for diplomant in diplomants %}
+        {{ diplomant }}</br>
+    {% endfor %}
+  </body>
+</html>

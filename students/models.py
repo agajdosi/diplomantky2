@@ -7,14 +7,6 @@ from tinymce import models as tinymce_models
 
 # Create your models here.
 
-class Profile(models.Model):
-  user = models.OneToOneField(User, on_delete=models.CASCADE)
-  portfolio = tinymce_models.HTMLField()
-
-  def __str__(self):
-    return f'{self.user} ({self.user.first_name} {self.user.last_name})'
-
-
 class Exhibition(models.Model):
   title = models.CharField(max_length=120)
   url = models.CharField(max_length=120)
@@ -23,6 +15,15 @@ class Exhibition(models.Model):
   
   def __str__(self):
     return f'{self.title} - {self.url}'
+
+
+class Profile(models.Model):
+  user = models.OneToOneField(User, on_delete=models.CASCADE)
+  portfolio = tinymce_models.HTMLField()
+
+  def __str__(self):
+    return f'{self.user} ({self.user.first_name} {self.user.last_name})'
+
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):

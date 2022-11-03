@@ -2,12 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>title</title>
+    <title>GRADUATES</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head>
   <body>
-    <h1>PROFILES</h1>
+    {% include "header.html" %}
+    
+    <h1>GRADUATES</h1>
     {% for profile in profiles %}
       <a href="{{ profile.user.first_name }}-{{ profile.user.last_name }}">{{ profile.user.first_name }} {{ profile.user.last_name }}</a></br>
     {% endfor %}

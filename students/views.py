@@ -1,14 +1,31 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import Group, User
 
-from .models import Profile
+from .models import Profile, Exhibition
 from .forms import ProfileForm
 
 
-def profiles(request):
+def index(request):
+    exhibitions = Exhibition.objects.all()
+    diplomants = User.objects.filter(groups__name='DIPLOMANTKY')
+    context = {
+      'exhibitions': exhibitions,
+      'diplomants': diplomants,
+    }
+    return render(request, 'index.html', context=context)
+
+
+
+def graduates(request):
     profiles = Profile.objects.all()
-    return render(request, 'profiles.html', context={'profiles': profiles})
+    return render(request, 'graduates.html', context={'profiles': profiles})
+
+
+def exhibitions(request):
+    exhibitions = Exhibition.objects.all()
+    return render(request, 'exhibitions.html', context={'exhibitions': exhibitions})
 
 
 def show_portfolio(request, first_name, last_name):
@@ -18,7 +35,7 @@ def show_portfolio(request, first_name, last_name):
         user__last_name__iexact = last_name
         )
 
-    return render(request, 'portfolio.html', context={'profile': profile})
+    return render(request, 'show_portfolio.html', context={'profile': profile})
 
 
 @login_required(login_url='/admin/login/')
