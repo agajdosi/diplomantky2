@@ -1,9 +1,10 @@
 from django.urls import path
 
-from .views import profile, profiles, profile_edit
+from .views import profiles, show_portfolio, edit_portfolio
+
 
 urlpatterns = [
   path('', profiles),
-  path('<str:first_name>-<str:last_name>/', profile),
-  path('<str:first_name>-<str:last_name>/edit/', profile_edit),
+  path('<str:first_name>-<str:last_name>/', show_portfolio),
+  path('<str:first_name>-<str:last_name>/edit/', edit_portfolio),
 ]

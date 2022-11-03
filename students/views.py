@@ -11,33 +11,35 @@ def profiles(request):
     return render(request, 'profiles.html', context={'profiles': profiles})
 
 
-def profile(request, first_name, last_name):
+def show_portfolio(request, first_name, last_name):
+    """Show the portfolio page of the artist by first name and last name."""
     profile = Profile.objects.get(
         user__first_name__iexact = first_name,
         user__last_name__iexact = last_name
         )
 
-    return render(request, 'profile.html', context={'profile': profile})
+    return render(request, 'portfolio.html', context={'profile': profile})
 
 
-@login_required(login_url='/admin/')
-def profile_edit(request, first_name, last_name):
+@login_required(login_url='/admin/login/')
+def edit_portfolio(request, first_name, last_name):
+    """Edit the portfolio. Available only for the user who is owner of portfolio."""
     path = request.path[:-1].rpartition('/')
     profile = Profile.objects.get(
         user__first_name__iexact = first_name,
         user__last_name__iexact = last_name
         )
-    
+
     if profile.user != request.user:
       return HttpResponseRedirect(f'{path[0]}/')
     
     if request.method == 'POST':
         form = ProfileForm(request.POST)
         if not form.is_valid():
-            return render(request, 'profile_edit.html', context={'profileform': form})
+            return render(request, 'edit_portfolio..html', context={'profileform': form})
         profile.portfolio = form.cleaned_data['portfolio']
         profile.save()
         return HttpResponseRedirect(f'{path[0]}/')
-    
+
     form = ProfileForm(instance=profile)
-    return render(request, 'profile_edit.html', context={'profileform': form})
+    return render(request, 'edit_portfolio.html', context={'profileform': form})
