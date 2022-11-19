@@ -4,16 +4,24 @@
 
 {% block content %}
   {% for exhibition in exhibitions %}
-    <div class="exhibition">
-      {{ exhibition.title }}
-      {{ exhibition.url }}
+  <div class="contitem">
+    <div class="exhibition half">
+      <h1>
+        <span class="expander">➔</span>
+        Výstava {{ exhibition.url }}
+      </h1>
     </div>
-    <div class="graduates">
-    {% for graduate in exhibition.artists.all %}
-      <div class="graduate">
-      {{ graduate.first_name }} {{ graduate.last_name }}
-      </div>
-    {% endfor %}
+    <div class="graduates half">
+      <h1>
+        <span class="expander">➔</span>
+        Diplomantky {{ exhibition.url }}
+      </h1>
+      {% for graduate in exhibition.artists.all %}
+        <div class="graduate">
+        {{ graduate.first_name }} {{ graduate.last_name }}
+        </div>
+      {% endfor %}
     </div>
+  </div>
   {% endfor %}
 {% endblock %}
