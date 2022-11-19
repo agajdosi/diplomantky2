@@ -1,19 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>GRADUATES</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-  </head>
-  <body>
-    {% include "header.html" %}
+{% extends 'base.html' %}
 
-    <h1>GRADUATES</h1>
-    {% for profile in profiles %}
-      <a href="{{ profile.user.first_name }}-{{ profile.user.last_name }}">{{ profile.user.first_name }} {{ profile.user.last_name }}</a></br>
-    {% endfor %}
+{% block title %}Graduates{% endblock %}
 
-    {% include "footer.html" %}
-  </body>
-</html>
+{% block content %}
+  <h1>GRADUATES</h1>
+  {% for profile in profiles %}
+    <a href="{{ profile.user.first_name }}-{{ profile.user.last_name }}">{{ profile.user.first_name }} {{ profile.user.last_name }}</a></br>
+  {% endfor %}
+{% endblock %}

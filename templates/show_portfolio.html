@@ -1,17 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>title</title>
-  </head>
-  <body>
-    {% include "header.html" %}
-    
-    <h1>{{ profile.user.first_name }} {{ profile.user.last_name }}</h1>
-      {{ profile.portfolio|safe }}
+{% extends 'base.html' %}
 
-    {% if request.user == profile.user %}
-    <a href="edit/">EDIT</a>
-    {% endif %}
-  </body>
-</html>
+{% block title %}{{ profile.user.first_name }} {{ profile.user.last_name }} - portfolio{% endblock %}
+
+{% block content %}
+  <h1>{{ profile.user.first_name }} {{ profile.user.last_name }}</h1>
+    {{ profile.portfolio|safe }}
+
+  {% if request.user == profile.user %}
+  <a href="edit/">EDIT</a>
+  {% endif %}
+{% endblock %}

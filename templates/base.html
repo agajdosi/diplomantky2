@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>INDEX</title>
-    <link rel="stylesheet" href="static/main.css">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="/static/main.css">
 </head>
 <body>
 {% include "header.html" %}
 
 <div class="content">
-  {% block content %}{% endblock %>
+  {% block content %}{% endblock %}
 </div>
 
 {% include "footer.html" %}
