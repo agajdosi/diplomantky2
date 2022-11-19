@@ -1,35 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>INDEX</title>
-    <link rel="stylesheet" href="static/main.css">
-  </head>
-  <body>
-    {% include "header.html" %}
+{% extends 'base.html' %}
 
-<div class="main">
-
-{% for exhibition in exhibitions %}
-  <div class="exhibition">
-    {{ exhibition.title }}
-    {{ exhibition.url }}
-    
-  </div>
-
-  <div class="graduates">
-  {% for graduate in exhibition.artists.all %}
-    <div class="graduate">
-    {{ graduate.first_name }} {{ graduate.last_name }}
+{% block content %}
+  {% for exhibition in exhibitions %}
+    <div class="exhibition">
+      {{ exhibition.title }}
+      {{ exhibition.url }}
+    </div>
+    <div class="graduates">
+    {% for graduate in exhibition.artists.all %}
+      <div class="graduate">
+      {{ graduate.first_name }} {{ graduate.last_name }}
+      </div>
+    {% endfor %}
     </div>
   {% endfor %}
-  </div>
-
-{% endfor %}
-
-
-  {% include "footer.html" %}
-</div>
-
-  </body>
-</html>
+{% endblock %}
