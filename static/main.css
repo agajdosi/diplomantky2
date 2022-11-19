@@ -27,9 +27,13 @@ a, a:visited, a:hover, a:active {
     text-decoration-line: none;
 }
 
-.footer {
-    text-decoration-line: none;
+footer {
+    position: fixed;
+    height: 40px;
+    width: 100vw;
+    bottom: 0;
     padding: 1rem 40px;
+    background-color: #000000;
 }
 
 .main{
