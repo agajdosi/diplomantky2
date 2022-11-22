@@ -7,7 +7,7 @@ html { font-family: 'Inter', sans-serif; }
 html {
     background-color: #000000;
     color: #ffffff;
-    font-size: 16px;
+    font-size: 12px;
 }
 
 body {
@@ -16,6 +16,26 @@ body {
 
 a, a:visited, a:hover, a:active {
     color: inherit;
+}
+
+h1 {
+    font-weight: 400;
+    font-size: 3rem;
+}
+
+.button {
+    padding: .5rem 1rem;
+    margin: 0.5rem 0rem;
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: normal;
+    border-radius: 10px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);
+    text-decoration: none;
+    color: rgb(0,0,0);
 }
 
 
@@ -28,7 +48,6 @@ a, a:visited, a:hover, a:active {
     text-decoration-line: none;
 }
 
-
 footer {
     position: fixed;
     height: 40px;
@@ -38,19 +57,15 @@ footer {
     background-color: #000000;
 }
 
-
 .content {
     padding: 0 40px;
     display: flex;
     flex-direction: column;
-    align-items: stretch;
-    align-content: stretch;
 }
 
 .contitem {
     display: flex;
     flex-wrap: wrap;
-    justify-content: stretch;
 }
 
 .contitem h1 {
@@ -61,5 +76,18 @@ footer {
 .contitem .half {
     flex-grow: 1;
     min-width: 400px;
+}
+
+.graduates {
+    display: flex;
+    flex-direction: column;
+}
+
+.graduates a {
+    color: rgb(0,0,0);
+}
+
+.graduate {
+    width: 300px;
 }
 
