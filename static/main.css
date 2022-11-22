@@ -53,8 +53,31 @@ footer {
     height: 40px;
     width: 100vw;
     bottom: 0;
-    padding: 1rem 40px;
     background-color: #000000;
+    color:#9D9C9C;
+}
+
+.social img {
+    margin-left: 1rem;
+}
+
+.menu {
+    margin: 0 40px;
+    display: flex;
+    justify-content: space-between;  
+}
+
+.menu img {
+    filter: invert(70%) sepia(0%) saturate(0%) hue-rotate(294deg) brightness(90%) contrast(86%);
+}
+
+.menuleft {
+    display: flex;
+    justify-content: space-between;
+}
+
+.menuleft div {
+    margin-left: 2rem;
 }
 
 .content {
