@@ -9,7 +9,7 @@ services:
   run_command: gunicorn --worker-tmp-dir /dev/shm mysite.wsgi
   envs:
   - key: DISABLE_COLLECTSTATIC
-    value: "0"
+    value: "1"
     scope: BUILD_TIME
   - key: DATABASE_URL
     value: "${db.DATABASE_URL}"
@@ -52,7 +52,7 @@ jobs:
   run_command: python manage.py migrate
   envs:
   - key: DISABLE_COLLECTSTATIC
-    value: "0"
+    value: "1"
     scope: BUILD_TIME
   - key: DATABASE_URL
     value: "${db.DATABASE_URL}"
