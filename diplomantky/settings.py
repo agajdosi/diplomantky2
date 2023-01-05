@@ -139,7 +139,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
-USE_SPACES = os.getenv('USE_SPACES') == 'True'
+USE_SPACES = os.getenv('USE_SPACES', 'False') == 'True'
 if USE_SPACES:
     # settings
     AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
