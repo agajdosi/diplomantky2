@@ -150,13 +150,17 @@ if USE_SPACES:
     AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}    
     # static settings
     AWS_LOCATION = 'static'
-    STATIC_URL = f'https://{AWS_S3_ENDPOINT_URL}/{AWS_LOCATION}/'
-    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    #STATICFILES_STORAGE = 'diplomantky.storage_backends.StaticStorage'
+    STATIC_URL = f'{AWS_S3_ENDPOINT_URL}/{AWS_LOCATION}/'
+    #STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    STATICFILES_STORAGE = 'diplomantky.storage_backends.StaticStorage'
     # public media settings
     PUBLIC_MEDIA_LOCATION = 'media'
-    MEDIA_URL = f'https://{AWS_S3_ENDPOINT_URL}/{PUBLIC_MEDIA_LOCATION}/'
+    MEDIA_URL = f'{AWS_S3_ENDPOINT_URL}/{PUBLIC_MEDIA_LOCATION}/'
     DEFAULT_FILE_STORAGE = 'diplomantky.storage_backends.PublicMediaStorage'
+
+    #TINYMCE-FIX https://github.com/jazzband/django-tinymce/issues/420
+    from django.contrib.staticfiles.storage import staticfiles_storage
+    TINYMCE_JS_URL = staticfiles_storage.url('tinymce/tinymce.min.js')
 else:
     STATIC_URL = '/static/'
     STATIC_ROOT = BASE_DIR / 'staticfiles'
@@ -171,7 +175,6 @@ STATICFILES_DIRS = (BASE_DIR / 'static',)
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 ### TINYMCE CONFIG
-
 TINYMCE_DEFAULT_CONFIG = {
     "height": "320px",
     "width": "960px",
